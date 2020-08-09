@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security;
 
 namespace RickGuitar
 {
@@ -10,7 +11,7 @@ namespace RickGuitar
 			guitars = new List<Guitar>();
 		}
 
-		public void AddGuitar(string serialNumber, double price, string builder, string model, string type, string backWood, string topWood)
+		public void AddGuitar(string serialNumber, double price, Builder builder, string model, Type type, Wood backWood, Wood topWood)
 		{
 			Guitar guitar = new Guitar(serialNumber, price, builder, model, type, backWood, topWood);
 			guitars.Add(guitar);
@@ -29,33 +30,29 @@ namespace RickGuitar
 
 		public Guitar Search(Guitar searchGuitar)
 		{
-			string builder = searchGuitar.GetBuilder();
-			string model = searchGuitar.GetModel();
-			string type = searchGuitar.GetType();
-			string backWood = searchGuitar.GetBackWood();
-			string topWood = searchGuitar.GetTopWood();
+			string model = searchGuitar.GetModel().ToLower();
 
 			foreach (Guitar guitar in guitars) {
-				if (builder != null && !builder.Equals("") && !builder.Equals(guitar.GetBuilder())) {
+				if (searchGuitar.GetBuilder() != guitar.GetBuilder()) {
 					continue;
 				}
 
-				if (model != null && !model.Equals("") && !model.Equals(guitar.GetModel()))
+				if (model != null && !model.Equals("") && !model.Equals(guitar.GetModel().ToLower()))
 				{
 					continue;
 				}
 
-				if (type != null && !type.Equals("") && !type.Equals(guitar.GetType()))
+				if (searchGuitar.GetType() != guitar.GetType())
 				{
 					continue;
 				}
 
-				if (backWood != null && !backWood.Equals("") && !backWood.Equals(guitar.GetBackWood()))
+				if (searchGuitar.GetBackWood() != guitar.GetBackWood())
 				{
 					continue;
 				}
 
-				if (topWood != null && !topWood.Equals("") && !topWood.Equals(guitar.GetTopWood()))
+				if (searchGuitar.GetTopWood() != guitar.GetTopWood())
 				{
 					continue;
 				}

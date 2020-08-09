@@ -8,7 +8,7 @@ namespace RickGuitar
 			Inventory inventory = new Inventory();
 			InitializeInventory(inventory);
 
-			Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor", "electric", "Alder", "Alder");
+			Guitar whatErinLikes = new Guitar("", 0, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
 
 			Guitar guitar = inventory.Search(whatErinLikes);
 
@@ -27,7 +27,7 @@ namespace RickGuitar
 		}
 
 		public static void InitializeInventory(Inventory inventory) {
-			inventory.AddGuitar("V96693", 1499.95, "Fender", "Stratocastor", "electric", "Alder", "Alder");
+			inventory.AddGuitar("V96693", 1499.95, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
 		}
 	}
 }
