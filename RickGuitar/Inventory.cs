@@ -28,9 +28,11 @@ namespace RickGuitar
 			return null;
 		}
 
-		public Guitar Search(Guitar searchGuitar)
+		//public Guitar Search(Guitar searchGuitar)
+		public List<Guitar> Search(Guitar searchGuitar)
 		{
 			string model = searchGuitar.GetModel().ToLower();
+			List<Guitar> matchedGuitars = new List<Guitar>();
 
 			foreach (Guitar guitar in guitars) {
 				if (searchGuitar.GetBuilder() != guitar.GetBuilder()) {
@@ -57,9 +59,11 @@ namespace RickGuitar
 					continue;
 				}
 
-				return guitar;
+				//return guitar;
+				matchedGuitars.Add(guitar);
 			}
-			return null;
+			//return null;
+			return matchedGuitars;
 		}
 	}
 }
