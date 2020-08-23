@@ -13,7 +13,6 @@ namespace RickGuitar
 
 			List<Guitar> guitars = inventory.Search(whatErinLikes);
 
-
 			if (guitars.Count > 0) {
 				Console.WriteLine("Erin, you might like this:\n");
 				int count = 1;

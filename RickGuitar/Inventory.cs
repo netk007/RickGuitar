@@ -28,7 +28,6 @@ namespace RickGuitar
 			return null;
 		}
 
-		//public Guitar Search(Guitar searchGuitar)
 		public List<Guitar> Search(Guitar searchGuitar)
 		{
 			string model = searchGuitar.GetModel().ToLower();
@@ -59,10 +58,8 @@ namespace RickGuitar
 					continue;
 				}
 
-				//return guitar;
 				matchedGuitars.Add(guitar);
 			}
-			//return null;
 			return matchedGuitars;
 		}
 	}
