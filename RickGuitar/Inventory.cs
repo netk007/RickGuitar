@@ -11,9 +11,8 @@ namespace RickGuitar
 			guitars = new List<Guitar>();
 		}
 
-		public void AddGuitar(string serialNumber, double price, Builder builder, string model, Type type, Wood backWood, Wood topWood)
+		public void AddGuitar(Guitar guitar)
 		{
-			Guitar guitar = new Guitar(serialNumber, price, builder, model, type, backWood, topWood);
 			guitars.Add(guitar);
 		}
 
@@ -28,37 +27,14 @@ namespace RickGuitar
 			return null;
 		}
 
-		public List<Guitar> Search(Guitar searchGuitar)
+		public List<Guitar> Search(GuitarSpec searchSpec)
 		{
-			string model = searchGuitar.GetModel().ToLower();
 			List<Guitar> matchedGuitars = new List<Guitar>();
 
-			foreach (Guitar guitar in guitars) {
-				if (searchGuitar.GetBuilder() != guitar.GetBuilder()) {
-					continue;
-				}
-
-				if (model != null && !model.Equals("") && !model.Equals(guitar.GetModel().ToLower()))
-				{
-					continue;
-				}
-
-				if (searchGuitar.GetType() != guitar.GetType())
-				{
-					continue;
-				}
-
-				if (searchGuitar.GetBackWood() != guitar.GetBackWood())
-				{
-					continue;
-				}
-
-				if (searchGuitar.GetTopWood() != guitar.GetTopWood())
-				{
-					continue;
-				}
-
-				matchedGuitars.Add(guitar);
+			foreach (Guitar guitar in guitars)
+			{
+				if(guitar.getSpec().matches(searchSpec))
+					matchedGuitars.Add(guitar);
 			}
 			return matchedGuitars;
 		}

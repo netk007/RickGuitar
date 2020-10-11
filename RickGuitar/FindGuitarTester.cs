@@ -9,7 +9,7 @@ namespace RickGuitar
 			Inventory inventory = new Inventory();
 			InitializeInventory(inventory);
 
-			Guitar whatErinLikes = new Guitar("", 0, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+			GuitarSpec whatErinLikes = new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 12);
 
 			List<Guitar> guitars = inventory.Search(whatErinLikes);
 
@@ -17,25 +17,25 @@ namespace RickGuitar
 				Console.WriteLine("Erin, you might like this:\n");
 				int count = 1;
 				foreach (Guitar guitar in guitars) {
-					Console.WriteLine(count + ".\n");
-					Console.WriteLine(guitar.GetBuilder() + " " + guitar.GetModel() + " " +
+					Console.WriteLine(count + ".");
+					Console.WriteLine(guitar.getSpec().GetBuilder() + " " + guitar.getSpec().GetModel() + " " +
 						guitar.GetType() + " guitar:\n " +
-						guitar.GetBackWood() + " back and sides,\n " +
-						guitar.GetTopWood() + " top.\nYou can have it for only $" +
+						guitar.getSpec().GetBackWood() + " back and sides,\n " +
+						guitar.getSpec().GetTopWood() + " top.\n" +
+						guitar.getSpec().getNumStrings() + " strings.\nYou can have it for only $" +
 						guitar.GetPrice() + "!");
-
 					count++;
 				}
 			}
 			else {
 				Console.WriteLine("Sorry, Erin, we have nothing for you.");
 			}
-
 		}
 
-		public static void InitializeInventory(Inventory inventory) {
-			inventory.AddGuitar("V95693", 1499.95, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
-			inventory.AddGuitar("V9512", 1549.95, Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER);
+		public static void InitializeInventory(Inventory inventory)
+		{
+			inventory.AddGuitar(new Guitar("V95693", 1499.95, new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 12)));
+			inventory.AddGuitar(new Guitar("V9512", 1549.95, new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ELECTRIC, Wood.ALDER, Wood.ALDER, 12)));
 		}
 	}
 }
