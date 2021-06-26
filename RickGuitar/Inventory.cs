@@ -33,7 +33,7 @@ namespace RickGuitar
 
 			foreach (Guitar guitar in guitars)
 			{
-				if(guitar.getSpec().matches(searchSpec))
+				if(guitar.GetSpec().Equals(searchSpec))
 					matchedGuitars.Add(guitar);
 			}
 			return matchedGuitars;

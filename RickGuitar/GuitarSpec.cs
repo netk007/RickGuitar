@@ -48,12 +48,12 @@ namespace RickGuitar
 			return topWood;
 		}
 
-		public int getNumStrings()
+		public int GetNumStrings()
 		{
 			return numStrings;
 		}
 
-		public bool matches(GuitarSpec spec)
+		public bool Equals(GuitarSpec spec)
 		{
 			string model = spec.model;
 

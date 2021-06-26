@@ -18,12 +18,12 @@ namespace RickGuitar
 				int count = 1;
 				foreach (Guitar guitar in guitars) {
 					Console.WriteLine(count + ".");
-					Console.WriteLine(guitar.getSpec().GetBuilder() + " " + guitar.getSpec().GetModel() + " " +
-						guitar.GetType() + " guitar:\n " +
-						guitar.getSpec().GetBackWood() + " back and sides,\n " +
-						guitar.getSpec().GetTopWood() + " top.\n" +
-						guitar.getSpec().getNumStrings() + " strings.\nYou can have it for only $" +
-						guitar.GetPrice() + "!");
+					Console.WriteLine(guitar.GetSpec().GetBuilder() + " " + guitar.GetSpec().GetModel() + " " +
+						guitar.GetSpec().GetType() + " guitar:\n " +
+						guitar.GetSpec().GetBackWood() + " back and sides,\n " +
+						guitar.GetSpec().GetTopWood() + " top.\n" +
+						guitar.GetSpec().GetNumStrings() + " strings.\nYou can have it for only $" +
+						guitar.GetPrice() + "!\n");
 					count++;
 				}
 			}

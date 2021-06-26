@@ -27,7 +27,7 @@ namespace RickGuitar
 			this.price = price;
 		}
 
-		public GuitarSpec getSpec() {
+		public GuitarSpec GetSpec() {
 			return this.spec;
 		}
 	}
