@@ -2,33 +2,10 @@
 
 namespace RickGuitar
 {
-	public class Guitar
+	public class Guitar : Instrument
 	{
-		private string serialNumber;
-		private double price;
-		private GuitarSpec spec;
-
-		public Guitar(string serialNumber, double price, GuitarSpec spec)
+		public Guitar(string serialNumber, double price, GuitarSpec spec) : base(serialNumber, price, spec)
 		{
-			this.serialNumber = serialNumber;
-			this.price = price;
-			this.spec = spec;
-		}
-
-		public string GetSerialNumber() {
-			return serialNumber;
-		}
-
-		public double GetPrice() {
-			return price;
-		}
-
-		public void SetPrice(double price) {
-			this.price = price;
-		}
-
-		public GuitarSpec GetSpec() {
-			return this.spec;
 		}
 	}
 }

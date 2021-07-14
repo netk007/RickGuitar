@@ -4,48 +4,14 @@ using System.Text;
 
 namespace RickGuitar
 {
-	public class GuitarSpec
+	public class GuitarSpec: InstrumentSpec
 	{
-		private Builder builder;
-		private string model;
-		private Type type;
-		private Wood backWood;
-		private Wood topWood;
+		
 		private int numStrings;
 
-		public GuitarSpec(Builder builder, string model, Type type, Wood backWood, Wood topWood, int numStrings)
+		public GuitarSpec(string model, Builder builder, Type type, Wood backWood, Wood topWood, int numStrings) : base(model, builder, type, backWood, topWood)
 		{
-			this.builder = builder;
-			this.model = model;
-			this.type = type;
-			this.backWood = backWood;
-			this.topWood = topWood;
 			this.numStrings = numStrings;
-		}
-
-		public Builder GetBuilder()
-		{
-			return builder;
-		}
-
-		public string GetModel()
-		{
-			return model;
-		}
-
-		public new Type GetType()
-		{
-			return type;
-		}
-
-		public Wood GetBackWood()
-		{
-			return backWood;
-		}
-
-		public Wood GetTopWood()
-		{
-			return topWood;
 		}
 
 		public int GetNumStrings()
@@ -55,17 +21,7 @@ namespace RickGuitar
 
 		public bool Equals(GuitarSpec spec)
 		{
-			string model = spec.model;
-
-			if (this.builder != spec.builder)
-				return false;
-			if (model != null && model != "" && this.model != spec.model)
-				return false;
-			if (this.type != spec.type)
-				return false;
-			if (this.backWood != spec.backWood)
-				return false;
-			if (this.topWood != spec.topWood)
+			if (!base.Equals((InstrumentSpec)spec))
 				return false;
 			if (this.numStrings != spec.numStrings)
 				return false;

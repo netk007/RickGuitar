@@ -5,38 +5,52 @@ namespace RickGuitar
 {
 	public class Inventory
 	{
-		private List<Guitar> guitars;
+		private List<Instrument> inventory;
 
 		public Inventory() {
-			guitars = new List<Guitar>();
+			inventory = new List<Instrument>();
 		}
 
-		public void AddGuitar(Guitar guitar)
+		public void AddInstrument(Instrument instrument)
 		{
-			guitars.Add(guitar);
+			inventory.Add(instrument);
 		}
 
-		public Guitar GetGuitar(string serialNumber)
+		public Instrument GetInstrument(string serialNumber)
 		{
-			foreach (Guitar guitar in guitars) {
-				if (guitar.GetSerialNumber().Equals(serialNumber))
+			foreach (Instrument instrument in inventory)
+			{
+				Instrument actualInstrument = (Instrument)instrument;
+				if (actualInstrument.GetSerialNumber().Equals(serialNumber))
 				{
-					return guitar;
+					return instrument;
 				}
 			}
 			return null;
 		}
 
-		public List<Guitar> Search(GuitarSpec searchSpec)
+		public List<Instrument> Search(GuitarSpec searchSpec)
 		{
-			List<Guitar> matchedGuitars = new List<Guitar>();
+			List<Instrument> matchedInstrument = new List<Instrument>();
 
-			foreach (Guitar guitar in guitars)
+			foreach (Instrument instrument in inventory)
 			{
-				if(guitar.GetSpec().Equals(searchSpec))
-					matchedGuitars.Add(guitar);
+				if(instrument is Guitar && instrument.GetSpec().Equals(searchSpec))
+					matchedInstrument.Add(instrument);
 			}
-			return matchedGuitars;
+			return matchedInstrument;
+		}
+
+		public List<Instrument> Search(MandolinSpec searchSpec)
+		{
+			List<Instrument> matchedInstrument = new List<Instrument>();
+
+			foreach (Instrument instrument in inventory)
+			{
+				if (instrument is Mandolin && instrument.GetSpec().Equals(searchSpec))
+					matchedInstrument.Add(instrument);
+			}
+			return matchedInstrument;
 		}
 	}
 }
