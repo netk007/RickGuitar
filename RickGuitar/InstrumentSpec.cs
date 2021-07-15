@@ -1,66 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml.Schema;
 
 namespace RickGuitar
 {
-	public abstract class InstrumentSpec
+	public class InstrumentSpec
 	{
-		private string model;
-		private Builder builder;
-		private Type type;
-		private Wood backWood;
-		private Wood topWood;
+		private IDictionary<string, object> properties;
 
-		public InstrumentSpec(string model, Builder builder, Type type, Wood backWood, Wood topWood)
+		public InstrumentSpec(IDictionary<string, object> properties)
 		{
-			this.builder = builder;
-			this.model = model;
-			this.type = type;
-			this.backWood = backWood;
-			this.topWood = topWood;
+			if (properties == null)
+			{
+				this.properties = null;
+			}
+			else
+			{
+				this.properties = new Dictionary<string, object>(properties);
+			}
 		}
 
-		public Builder GetBuilder()
+		public object GetProperty(string property)
 		{
-			return builder;
+			return this.properties[property];
 		}
 
-		public string GetModel()
+		public IDictionary<string, object> GetProperties()
 		{
-			return model;
-		}
-
-		public new Type GetType()
-		{
-			return type;
-		}
-
-		public Wood GetBackWood()
-		{
-			return backWood;
-		}
-
-		public Wood GetTopWood()
-		{
-			return topWood;
+			return this.properties;
 		}
 
 		public Boolean Equals(InstrumentSpec spec)
 		{
-			string model = spec.model;
-
-			if (model != null && model != "" && this.model != spec.model)
-				return false;
-			if (this.builder != spec.builder)
-				return false;
-			if (this.type != spec.type)
-				return false;
-			if (this.backWood != spec.backWood)
-				return false;
-			if (this.topWood != spec.topWood)
-				return false;
+			IDictionary<string, object> specProperties = spec.GetProperties();
+			foreach (KeyValuePair<string, object> i in specProperties)
+			{
+				if (!this.properties[i.Key].Equals(i.Value))
+				{
+					return false;
+				}
+			}
 
 			return true;
 		}

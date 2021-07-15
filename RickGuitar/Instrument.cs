@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RickGuitar
 {
-	public abstract class Instrument
+	public class Instrument
 	{
 		private string serialNumber;
 		private double price;

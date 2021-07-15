@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security;
 
 namespace RickGuitar
 {
@@ -20,8 +19,7 @@ namespace RickGuitar
 		{
 			foreach (Instrument instrument in inventory)
 			{
-				Instrument actualInstrument = (Instrument)instrument;
-				if (actualInstrument.GetSerialNumber().Equals(serialNumber))
+				if (instrument.GetSerialNumber().Equals(serialNumber))
 				{
 					return instrument;
 				}
@@ -29,25 +27,12 @@ namespace RickGuitar
 			return null;
 		}
 
-		public List<Instrument> Search(GuitarSpec searchSpec)
+		public List<Instrument> Search(InstrumentSpec searchSpec)
 		{
 			List<Instrument> matchedInstrument = new List<Instrument>();
-
 			foreach (Instrument instrument in inventory)
 			{
-				if(instrument is Guitar && instrument.GetSpec().Equals(searchSpec))
-					matchedInstrument.Add(instrument);
-			}
-			return matchedInstrument;
-		}
-
-		public List<Instrument> Search(MandolinSpec searchSpec)
-		{
-			List<Instrument> matchedInstrument = new List<Instrument>();
-
-			foreach (Instrument instrument in inventory)
-			{
-				if (instrument is Mandolin && instrument.GetSpec().Equals(searchSpec))
+				if(instrument.GetSpec().Equals(searchSpec))
 					matchedInstrument.Add(instrument);
 			}
 			return matchedInstrument;
